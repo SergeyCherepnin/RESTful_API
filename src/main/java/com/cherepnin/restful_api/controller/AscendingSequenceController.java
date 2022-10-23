@@ -31,7 +31,7 @@ public class AscendingSequenceController {
             content = @Content(
                     examples = {@ExampleObject(
                             name = "File_Path",
-                            value ="{\"file_path\": \"C:/Users/Admin/Downloads/10m.txt\"}")})),
+                            value ="{\"file_path\": \"C:/test_data/10m.txt\"}")})),
             responses = {@ApiResponse(responseCode = "200",
                     description = "Success response",
                     content = @Content(
