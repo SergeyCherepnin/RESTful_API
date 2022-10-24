@@ -45,7 +45,7 @@ public class AverageValueController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("average_value", restfulApiService.getAverageValue(filePath).toString());
+        map.put("average_value", String.format("%.2f", restfulApiService.getAverageValue(filePath)));
         return ResponseEntity.ok(map);
     }
 }
