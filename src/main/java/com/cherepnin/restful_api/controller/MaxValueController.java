@@ -39,7 +39,7 @@ public class MaxValueController {
                                examples = {@ExampleObject(
                                name = "max value",
                                value = "{\"max_value\": \"49999978\"}")}))})
-    @PostMapping(value = "/get_max_value", consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE},
+    @PostMapping(value = "/get_max_value", consumes = {MediaType.APPLICATION_JSON_VALUE},
                  produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public ResponseEntity<?> getMaxValue(@RequestBody FilePath filePath) {
         if (filePath == null) {

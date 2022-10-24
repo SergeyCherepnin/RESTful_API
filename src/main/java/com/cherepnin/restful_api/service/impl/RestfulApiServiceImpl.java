@@ -59,7 +59,6 @@ public class RestfulApiServiceImpl implements RestfulApiService {
     }
 
     // список наибольших возрастающих последовательностей
-
     @Override
     public List<Set<Integer>> longestAscendingSequence(FilePath filePath) {
         List<Integer> startList = readFile(filePath.getFile_path());    //исходный список чисел
@@ -73,7 +72,6 @@ public class RestfulApiServiceImpl implements RestfulApiService {
     }
 
     // список наибольших убывающих последовательностей
-
     @Override
     public List<Set<Integer>> longestDescendingSequence(FilePath filePath) {
         List<Integer> startList = readFile(filePath.getFile_path());    //исходный список чисел
