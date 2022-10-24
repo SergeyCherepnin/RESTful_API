@@ -1,4 +1,4 @@
-package com.cherepnin.restful_api.controller;
+package com.cherepnin.restful_api.controllers;
 
 import com.cherepnin.restful_api.model.FilePath;
 import com.cherepnin.restful_api.service.RestfulApiService;
@@ -19,14 +19,14 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class AscendingSequenceController {
+public class DescendingSequenceController {
     private final RestfulApiService restfulApiService;
 
-    public AscendingSequenceController(RestfulApiService restfulApiService) {
+    public DescendingSequenceController(RestfulApiService restfulApiService) {
         this.restfulApiService = restfulApiService;
     }
 
-    @Tag(name = "Ascending sequence", description = "Longest ascending sequence definition")
+    @Tag(name = "Descending sequence", description = "Longest descending sequence definition")
     @Operation(requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
             content = @Content(
                     examples = {@ExampleObject(
@@ -36,32 +36,32 @@ public class AscendingSequenceController {
                     description = "Success response",
                     content = @Content(
                             examples = {@ExampleObject(
-                                    name = "ascending sequence",
+                                    name = "descending sequence",
                                     value = "{\n" +
-                                            "    \"ascending_sequence\": [\n" +
+                                            "    \"descending_sequence\": [\n" +
                                             "        [\n" +
-                                            "            -48190694,\n" +
-                                            "            -47725447,\n" +
-                                            "            -43038241,\n" +
-                                            "            -20190291,\n" +
-                                            "            -17190728,\n" +
-                                            "            -6172572,\n" +
-                                            "            8475960,\n" +
-                                            "            25205909,\n" +
-                                            "            48332507,\n" +
-                                            "            48676185\n" +
+                                            "            47689379,\n" +
+                                            "            42381213,\n" +
+                                            "            30043880,\n" +
+                                            "            12102356,\n" +
+                                            "            -4774057,\n" +
+                                            "            -5157723,\n" +
+                                            "            -11217378,\n" +
+                                            "            -23005285,\n" +
+                                            "            -23016933,\n" +
+                                            "            -39209115,\n" +
+                                            "            -49148762\n" +
                                             "        ]\n" +
                                             "    ]\n" +
                                             "}")}))})
-    @PostMapping(value = "/get_longest_asc_seq",
+    @PostMapping(value = "/get_longest_desc_seq",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<?> getLongestAscendingSequence(@RequestBody FilePath filePath) {
+    public ResponseEntity<?> getLongestDescendingSequence(@RequestBody FilePath filePath) {
         if (filePath == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
-
         HashMap<String, Object> map = new HashMap<>();
-        map.put("ascending_sequence", restfulApiService.longestAscendingSequence(filePath));
+        map.put("descending_sequence", restfulApiService.longestDescendingSequence(filePath));
         return ResponseEntity.ok(map);
     }
 }

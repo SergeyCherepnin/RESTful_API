@@ -14,12 +14,13 @@ public class RestfulApiServiceImpl implements RestfulApiService {
     // максимальное число в списке
     @Override
     public Integer getMaxValue(FilePath filePath) {
-        return readFile(filePath.getFile_path())
-                .stream()
-                .mapToInt(e -> e)
-                .max()
-                .orElseThrow(NoSuchElementException::new);
+            return readFile(filePath.getFile_path())
+                    .stream()
+                    .mapToInt(e -> e)
+                    .max()
+                    .orElseThrow(NoSuchElementException::new);
     }
+
     // минимальное число в списке
     @Override
     public Integer getMinValue(FilePath filePath) {
@@ -40,10 +41,11 @@ public class RestfulApiServiceImpl implements RestfulApiService {
                 .sorted()
                 .collect(Collectors.toList());
 
+        Integer halfOfList = list.get(list.size() / 2);
         if (list.size() % 2 == 0) {
-            median = (double) (list.get(list.size() / 2) + list.get((list.size() / 2) - 1)) / 2;
+            median = (double) (halfOfList + halfOfList - 1) / 2;
         }
-        else median = (double) list.get(list.size() / 2);
+        else median = (double) halfOfList;
 
         return median;
     }

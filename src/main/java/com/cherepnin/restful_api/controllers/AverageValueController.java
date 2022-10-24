@@ -1,4 +1,4 @@
-package com.cherepnin.restful_api.controller;
+package com.cherepnin.restful_api.controllers;
 
 import com.cherepnin.restful_api.model.FilePath;
 import com.cherepnin.restful_api.service.RestfulApiService;
@@ -19,14 +19,14 @@ import java.util.HashMap;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class MedianValueController {
+public class AverageValueController {
     private final RestfulApiService restfulApiService;
 
-    public MedianValueController(RestfulApiService restfulApiService) {
+    public AverageValueController(RestfulApiService restfulApiService) {
         this.restfulApiService = restfulApiService;
     }
 
-    @Tag(name = "Median value", description = "Median value definition")
+    @Tag(name = "Average value", description = "Average value definition")
     @Operation(requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
             content = @Content(
                     examples = {@ExampleObject(
@@ -36,16 +36,16 @@ public class MedianValueController {
                     description = "Success response",
                     content = @Content(
                             examples = {@ExampleObject(
-                                    name = "median value",
-                                    value = "{\"median_value\": \"25216.0\"}")}))})
-    @PostMapping(value = "/get_median_value",
+                                    name = "average value",
+                                    value = "{\"average_value\": \"7364.418442641844\"}")}))})
+    @PostMapping(value = "/get_average_value",
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<?> getMedianValue(@RequestBody FilePath filePath) {
+    public ResponseEntity<?> getAverageValue(@RequestBody FilePath filePath) {
         if (filePath == null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("median_value", restfulApiService.getMedianValue(filePath).toString());
+        map.put("average_value", String.format("%.2f", restfulApiService.getAverageValue(filePath)));
         return ResponseEntity.ok(map);
     }
 }

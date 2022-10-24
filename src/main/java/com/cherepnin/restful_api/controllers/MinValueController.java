@@ -1,4 +1,4 @@
-package com.cherepnin.restful_api.controller;
+package com.cherepnin.restful_api.controllers;
 
 import com.cherepnin.restful_api.model.FilePath;
 import com.cherepnin.restful_api.service.RestfulApiService;
